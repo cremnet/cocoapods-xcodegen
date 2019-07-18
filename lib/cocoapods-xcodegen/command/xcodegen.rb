@@ -18,13 +18,24 @@ module Pod
     #       in the `plugins.json` file, once your plugin is released.
     #
     class Xcodegen < Command
-      self.summary = 'Short description of cocoapods-xcodegen.'
+      self.summary = 'Plugin for Xcode project generation'
 
       self.description = <<-DESC
-        Longer description of cocoapods-xcodegen.
+        You need to install xcodegen first \n
+        \n
+        To use plugin add to your Podfile this lines: \n
+         \tplugin 'cocoapods-xcodegen',\n
+         \t\t\tspecs: 'project.yml' # optional value\n
+         \t\t\tkeys: [\n
+         \t\t\t\t'UseCache', # optional value\n
+         \t\t\t\t'Verbose'   # optional value\n
+         \t\t\t]\n
       DESC
 
-      self.arguments = 'NAME'
+      self.arguments = [
+        CLAide::Argument.new('specs', true),
+        CLAide::Argument.new('keys', false)
+      ]
 
       def initialize(argv)
         @name = argv.shift_argument
@@ -33,7 +44,7 @@ module Pod
 
       def validate!
         super
-        help! 'A Pod name is required.' unless @name
+        help! 'Specs yml file is required.' unless @specs
       end
 
       def run

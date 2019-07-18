@@ -7,13 +7,13 @@ Gem::Specification.new do |spec|
   spec.name          = 'cocoapods-xcodegen'
   spec.version       = CocoapodsXcodegen::VERSION
   spec.authors       = ['Roman Golofaev']
-  spec.email         = ['Roman.GOLOFAEV@raiffeisen.ru']
-  spec.description   = %q{A short description of cocoapods-xcodegen.}
-  spec.summary       = %q{A longer description of cocoapods-xcodegen.}
-  spec.homepage      = 'https://github.com/EXAMPLE/cocoapods-xcodegen'
+  spec.email         = ['cremnet@bk.ru']
+  spec.description   = %q{Plugin for Xcode project generation}
+  spec.summary       = %q{Plugin for Xcode project generation}
+  spec.homepage      = 'https://github.com/cremnet/cocoapods-xcodegen.git'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = Dir['lib/**/*']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
